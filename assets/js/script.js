@@ -63,8 +63,8 @@ document.addEventListener('click', (e) => {
             toggleModal(addTaskModal);
             break;
         case submitNewTaskBtn:
-            toggleModal(addTaskModal);
             if (submitNewTask()) {
+                toggleModal(addTaskModal);
             };
             break;
         default:
@@ -110,6 +110,10 @@ function submitNewTask() {
     const endDate = newTaskEndDate.value;
     const board = newTaskTypeBoard.selectedIndex;
 
+    if (!title || !description || !startDate || !endDate || !board) {
+        return false;
+    }
+
     let userEmail = localStorage.getItem('sessionEmail');
     userData = localStorage.getItem(userEmail);
     userData = JSON.parse(userData);
@@ -126,6 +130,7 @@ function submitNewTask() {
     
     // ADD TASK INFORMATION TO THE USER'S LOCAL STORAGE
     localStorage.setItem(userEmail, JSON.stringify(userData));
+    return true;
 }
 
 // LOGIC FOR LOADING USER'S DATA

@@ -1,0 +1,120 @@
+:root {
+    --black: hsla(0, 0%, 0%, 1);
+    --oxford-blue: hsla(221, 51%, 16%, 1);
+    --orange-web: hsla(37, 98%, 53%, 1);
+    --platinum: hsla(0, 0%, 90%, 1);
+    --white: hsla(0, 0%, 100%, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(to right bottom, #1a1a1a, #3a3a3a);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+input {
+    margin: .5em 0;
+}
+
+.disabled {
+    display: none;
+}
+
+.center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/*-----------------------------------------------------
+                          NAV BAR 
+------------------------------------------------------*/
+
+nav {
+    height: 8vh;
+    background-color: var(--platinum);
+}
+
+ul {
+    height: 100%;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+nav ul li {
+    transition: 150ms all ease-in-out;
+}
+
+nav ul li:active {
+    scale: .9;
+}
+
+nav ul li:hover {
+    cursor: pointer;
+}
+
+
+/*-----------------------------------------------------
+                  MODALS NAV BAR 
+------------------------------------------------------*/
+
+
+.container-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: hsla(0, 0%, 0%, .7);
+}
+
+.modal {
+    color: var(--platinum);
+    background-color: #3a3a3a;
+    border-radius: 40px;
+    height: clamp(350px, 50%, 450px);
+    width: 80%;
+    padding: 2.5em 4em;
+}
+
+.modal h1 {
+    margin-bottom: 1em;
+}
+
+.modal button {
+    padding: 1em;
+    border-radius: 10px;
+    background-color: var(--orange-web);
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    display: block;
+    width: clamp(190px, 100%, 190px);
+    margin-top: 2em;
+}
+
+.modal i {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 28%;
+    right: 20%;
+}

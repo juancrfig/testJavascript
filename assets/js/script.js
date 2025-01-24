@@ -27,7 +27,7 @@ const newTaskTypeBoard = document.querySelector('#new-task-boards');
 // EVENT LISTENER FOR CHECKING IF THERE'S AN ACTIVE SESSION
 
 document.addEventListener('DOMContentLoaded', () => {
-    const localItem = localStorage.getItem('sessionStatus'); 
+    const localItem = localStorage.getItem('sessionEmail'); 
     if (localItem) {
         loadUserData(localItem);
     }
@@ -63,8 +63,9 @@ document.addEventListener('click', (e) => {
             toggleModal(addTaskModal);
             break;
         case submitNewTaskBtn:
-            submitNewTask();
             toggleModal(addTaskModal);
+            if (submitNewTask()) {
+            };
             break;
         default:
             break;
@@ -87,7 +88,7 @@ function logIn(email, password) {
     if (userData[0] === password) {
         userData[2] = true;
         localStorage.setItem(email, JSON.stringify(userData));
-        localStorage.setItem('sessionStatus', email)
+        localStorage.setItem('sessionEmail', email)
         alert('Log In Success!');
     } else {
         alert('Incorrect data!');
@@ -96,7 +97,7 @@ function logIn(email, password) {
 
 function signUp(email, password) {
     const tasks = [];
-    const userData = [password, tasks, session];
+    const userData = [password, tasks];
     localStorage.setItem(email, JSON.stringify(userData));
 }
 
@@ -109,13 +110,23 @@ function submitNewTask() {
     const endDate = newTaskEndDate.value;
     const board = newTaskTypeBoard.selectedIndex;
 
+    let userEmail = localStorage.getItem('sessionEmail');
+    userData = localStorage.getItem(userEmail);
+    userData = JSON.parse(userData);
+
+    const task = {
+        "title": title,
+        "description": description,
+        "image": image,
+        "startDate": startDate,
+        "endDate": endDate,
+        "board": board
+    };
+    userData[1].push(task);
     
-
-
+    // ADD TASK INFORMATION TO THE USER'S LOCAL STORAGE
+    localStorage.setItem(userEmail, JSON.stringify(userData));
 }
-
-
-
 
 // LOGIC FOR LOADING USER'S DATA
 

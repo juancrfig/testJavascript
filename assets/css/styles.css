@@ -17,8 +17,9 @@ li {
 }
 
 body {
-    height: clamp(100vh, 100vh, 200vh);
-    background: linear-gradient(to right bottom, #1a1a1a, #3a3a3a);
+    height: 100vh;
+    background:#1a1a1a;
+    background-repeat: repeat;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
 }
@@ -49,7 +50,7 @@ main {
 nav {
     height: 8vh;
     background-color: var(--platinum);
-    margin-bottom: 5em;
+    margin-bottom: 2em;
 }
 
 ul {
@@ -132,6 +133,32 @@ nav ul li:hover {
 .board {
     background-color: var(--platinum);
     border-radius: 20px;
-    height: 100%;
+    height: 90%;
     width: 82%;
+    padding: 2em 2em 3.5em 2em;
+}
+
+.sub-board {
+    padding: 1em 2em;
+    margin-bottom: .8em;
+    height: 33.3%;
+    border-radius: 20px;
+    background-color: #1a1a1a;
+    overflow: auto;
+}
+
+.sub-board h1 {
+    margin-bottom: .5em;
+}
+
+.pending {
+    color: rgb(218, 57, 57);
+}
+
+.in-progress {
+    color: var(--orange-web);
+}
+
+.completed {
+    color: green
 }

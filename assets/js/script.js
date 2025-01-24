@@ -1,5 +1,3 @@
-// DEFINE VARIABLES FOR SIGN UP AND LOG IN
-
 const navUlElement = document.querySelector('nav ul');
 const containerModalLogInElm = document.querySelector('.container-modal-login');
 const logInBtn = document.querySelector('.log-in-button');
@@ -13,6 +11,16 @@ const passInputLogIn = document.querySelector('#pass-log-in');
 const emailInputSignUp = document.querySelector('#email-sign-up');
 const passInputSignUp = document.querySelector('#pass-sign-up');
 const signUpBtnSubmit = document.querySelector('#submit-sign-up');
+const addTaskButton = document.querySelector('.add-task-button i');
+const addTaskModal = document.querySelector('.container-modal-add-task');
+const closeAddTaskModal = document.querySelector('.modal-add-task i');
+const submitNewTaskBtn = document.querySelector('#submit-new-task-button');
+const newTaskTitle = document.querySelector('#new-task-title');
+const newTaskDescription = document.querySelector('#new-task-description');
+const newTaskImage = document.querySelector('#new-task-image');
+const newTaskStartDate = document.querySelector('#new-task-start-date');
+const newTaskEndDate = document.querySelector('#new-task-end-date');
+const newTaskTypeBoard = document.querySelector('#new-task-boards');
 
 
 
@@ -48,6 +56,16 @@ document.addEventListener('click', (e) => {
         case closeSignup:
             toggleModal(containerModalSignUpElm);
             break;
+        case addTaskButton:
+            toggleModal(addTaskModal);
+            break;
+        case closeAddTaskModal:
+            toggleModal(addTaskModal);
+            break;
+        case submitNewTaskBtn:
+            submitNewTask();
+            toggleModal(addTaskModal);
+            break;
         default:
             break;
     }
@@ -82,13 +100,26 @@ function signUp(email, password) {
     localStorage.setItem(email, JSON.stringify(userData));
 }
 
+function submitNewTask() {
+
+    const title = newTaskTitle.value;
+    const description = newTaskDescription.value;
+    const image = newTaskImage.value;
+    const startDate = newTaskStartDate.value;
+    const endDate = newTaskEndDate.value;
+    const board = newTaskTypeBoard.selectedIndex;
+
+    
+
+
+}
+
+
+
 
 // LOGIC FOR LOADING USER'S DATA
 
 function loadUserData(email) {
-    
     navUlElement.innerHTML = '';
     navUlElement.textContent = 'Welcome';
-
-    
 }

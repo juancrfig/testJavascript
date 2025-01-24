@@ -58,6 +58,31 @@
             </form>
         </div>
     </div>
-    <button class="add-task"><i class="fa-solid fa-plus"></i></button>
+    <button class="add-task-button"><i class="fa-solid fa-plus"></i></button>
+    <div class="container-modal-add-task container-modal disabled">
+        <div class="modal-add-task modal">
+            <i class="fa-solid fa-x"></i>
+            <h1>New Task</h1>
+            <form>
+                <label for="new-task-title">Title</label>
+                <input type="text" id="new-task-title" required>
+                <label for="new-task-description">Description</label>
+                <input type="text" id="new-task-description" required>
+                <label for="new-task-image">Image</label>
+                <input type="file" id="new-task-image">
+                <label for="new-task-start-date">Start</label>
+                <input type="date" id="new-task-start-date" required>
+                <label for="new-task-end-date">End</label>
+                <input type="date" id="new-task-end-date" required>
+                <label for="new-task-boards">Board</label>
+                <select name="board-choice" id="new-task-boards">
+                    <option value="pending">Pending</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+                <button id="submit-new-task-button">Add Task</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

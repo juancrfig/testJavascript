@@ -96,7 +96,7 @@ nav ul li:hover {
     color: var(--platinum);
     background-color: #3a3a3a;
     border-radius: 40px;
-    height: clamp(350px, 50%, 450px);
+    height: clamp(350px, fit-content, 450px);
     width: 80%;
     padding: 2.5em 4em;
 }
@@ -169,7 +169,7 @@ nav ul li:hover {
                 ADD TASK BUTTON
 ------------------------------------------------------*/
 
-.add-task i {
+.add-task-button i {
     position: fixed;
     bottom: 1%;
     left: 3%;
@@ -178,4 +178,23 @@ nav ul li:hover {
     background-color: var(--orange-web);
     border-radius: 20px;
     padding: .2em;
+    transition: all 100ms ease-in-out;
+}
+
+.add-task-button i:active {
+    scale: .9;
+}
+
+.add-task-button {
+    background-color: black;
+    border: none;
+}
+
+
+/*-----------------------------------------------------
+                ADD TASK MODAL
+------------------------------------------------------*/
+
+input[type="file"] {
+    width: 70%;
 }

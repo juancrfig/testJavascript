@@ -17,7 +17,7 @@ li {
 }
 
 body {
-    min-height: 100vh;
+    height: clamp(100vh, 100vh, 200vh);
     background: linear-gradient(to right bottom, #1a1a1a, #3a3a3a);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
@@ -37,6 +37,9 @@ input {
     align-items: center;
 }
 
+main {
+    height: 100%;
+}
 
 
 /*-----------------------------------------------------
@@ -46,6 +49,7 @@ input {
 nav {
     height: 8vh;
     background-color: var(--platinum);
+    margin-bottom: 5em;
 }
 
 ul {
@@ -117,4 +121,17 @@ nav ul li:hover {
     position: absolute;
     top: 28%;
     right: 20%;
+}
+
+
+/*-----------------------------------------------------
+                     BOARDS 
+------------------------------------------------------*/
+
+
+.board {
+    background-color: var(--platinum);
+    border-radius: 20px;
+    height: 100%;
+    width: 82%;
 }

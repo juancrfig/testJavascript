@@ -1,6 +1,6 @@
 :root {
     --black: hsla(0, 0%, 0%, 1);
-    --oxford-blue: hsla(221, 51%, 16%, 1);
+    --oxford-blue: rgb(64, 109, 204);
     --orange-web: hsla(37, 98%, 53%, 1);
     --platinum: hsla(0, 0%, 90%, 1);
     --white: hsla(0, 0%, 100%, 1);
@@ -156,9 +156,26 @@ nav ul li:hover {
 }
 
 .in-progress {
-    color: var(--orange-web);
+    color: var(--oxford-blue);
 }
 
 .completed {
     color: green
+}
+
+
+
+/*-----------------------------------------------------
+                ADD TASK BUTTON
+------------------------------------------------------*/
+
+.add-task i {
+    position: fixed;
+    bottom: 1%;
+    left: 3%;
+    font-size: 2rem;
+    color: var(--platinum);
+    background-color: var(--orange-web);
+    border-radius: 20px;
+    padding: .2em;
 }

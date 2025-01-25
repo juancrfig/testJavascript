@@ -23,15 +23,74 @@ const newTaskEndDate = document.querySelector('#new-task-end-date');
 const newTaskTypeBoard = document.querySelector('#new-task-boards');
 
 
-
 // EVENT LISTENER FOR CHECKING IF THERE'S AN ACTIVE SESSION
 
 document.addEventListener('DOMContentLoaded', () => {
     const localItem = localStorage.getItem('sessionEmail'); 
     if (localItem) {
+        console.log(localStorage.getItem(localItem))
         loadUserData(localItem);
     }
 })
+
+// LOGIC FOR LOADING USER'S DATA
+
+function loadUserData(email) {
+    navUlElement.innerHTML = '';
+    navUlElement.textContent = 'Welcome';
+    renderTasks(email);
+}
+
+// LOGIC FOR RENDERING TASK 
+function renderTasks(email) {
+    const userData = parseToJSON(email);
+    const userTasks = userData[1];
+
+    userTasks.forEach(element => {
+        const title = element.title;
+        const description = element.description;
+        const image = element.image;
+        const startDate = element.startDate;
+        const endDate = element.endDate;
+        const board = element.board;
+        const liElement = createLiElement(title);
+        assignToBoard(board, liElement);
+
+        liElement.addEventListener('click', generateModal(
+            description, 
+            image, 
+            startDate,
+            endDate))
+    });
+}
+
+function parseToJSON(email) {
+    return JSON.parse(localStorage.getItem(email));
+}
+
+function createLiElement(title) {
+    const liElement = document.createElement('li');
+    liElement.textContent = title;
+    return liElement;
+}
+
+function assignToBoard(board, liElement) {
+    switch (board) {
+        case 0:
+            console.log('assigning to pending');
+            break;
+        case 1:
+            console.log('assigning to in progress');
+            break;
+        case 2:
+            console.log('assigning to completed');
+            break;
+    }
+}
+
+function generateModal() {
+
+}
 
 // ADD EVENT LISTENER DIRECTLY IN DOCUMENT FOR EFFICIENCY AND READABILITY
 
@@ -70,8 +129,8 @@ document.addEventListener('click', (e) => {
         default:
             break;
     }
-
 })
+
 
 
 function toggleModal(modalElement) {
@@ -83,8 +142,7 @@ function toggleModal(modalElement) {
 // LOGIC FOR SIGNING UP AND LOGGING IN
 
 function logIn(email, password) {
-    let userData = localStorage.getItem(email);
-    userData = JSON.parse(userData)
+    const userData = parseToJSON(email);
     if (userData[0] === password) {
         userData[2] = true;
         localStorage.setItem(email, JSON.stringify(userData));
@@ -110,8 +168,9 @@ function submitNewTask() {
     const endDate = newTaskEndDate.value;
     const board = newTaskTypeBoard.selectedIndex;
 
-    if (!title || !description || !startDate || !endDate || !board) {
+    if (!title || !description || !startDate || !endDate) {
         return false;
+    } else {
     }
 
     let userEmail = localStorage.getItem('sessionEmail');
@@ -133,9 +192,4 @@ function submitNewTask() {
     return true;
 }
 
-// LOGIC FOR LOADING USER'S DATA
 
-function loadUserData(email) {
-    navUlElement.innerHTML = '';
-    navUlElement.textContent = 'Welcome';
-}

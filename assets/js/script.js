@@ -56,11 +56,9 @@ function renderTasks(email) {
         const liElement = createLiElement(title);
         assignToBoard(board, liElement);
 
-        liElement.addEventListener('click', generateModal(
-            description, 
-            image, 
-            startDate,
-            endDate))
+        liElement.addEventListener('click', () => {
+            generateModal(title, description, image, startDate, endDate);
+        })
     });
 }
 
@@ -74,22 +72,54 @@ function createLiElement(title) {
     return liElement;
 }
 
+const pendingBoardUl = document.querySelector('.pending ul');
+const inProgressBoardUl = document.querySelector('.in-progress ul');
+const completedBoardUl = document.querySelector('.completed ul');
+
 function assignToBoard(board, liElement) {
     switch (board) {
         case 0:
-            console.log('assigning to pending');
+            pendingBoardUl.appendChild(liElement);
             break;
         case 1:
-            console.log('assigning to in progress');
+            inProgressBoardUl.appendChild(liElement);
             break;
         case 2:
-            console.log('assigning to completed');
+            completedBoardUl.appendChild(liElement);
             break;
     }
 }
 
-function generateModal() {
+const dynamicContainerModal = document.querySelector('.dynamic-container-task');
+const dynamicModal = document.querySelector('.dynamic-modal-task');
 
+function generateModal(title, description, image, startDate, endDate) {
+
+    dynamicModal.innerHTML = '<i class="fa-solid fa-x"></i>';
+    const closeDynamicModal = document.querySelector('.dynamic-modal-task i');
+
+    closeDynamicModal.addEventListener('click', () => {
+        toggleModal(dynamicContainerModal);
+    })
+    
+    const titleElm = document.createElement('h1');
+    titleElm.textContent = title;
+    const descriptionElm = document.createElement('p');
+    descriptionElm.innerText = description;
+    const imageElm = document.createElement('img');
+    imageElm.setAttribute('src', image);
+    const startDateData = document.createElement('p');
+    startDateData.innerText = startDate;
+    const endDateData = document.createElement('p');
+    endDateData.textContent = endDate;
+
+    dynamicModal.appendChild(titleElm)
+    dynamicModal.appendChild(descriptionElm);
+    dynamicModal.appendChild(imageElm);
+    dynamicModal.appendChild(startDateData);
+    dynamicModal.appendChild(endDateData);
+
+    toggleModal(dynamicContainerModal);
 }
 
 // ADD EVENT LISTENER DIRECTLY IN DOCUMENT FOR EFFICIENCY AND READABILITY

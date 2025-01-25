@@ -198,3 +198,18 @@ nav ul li:hover {
 input[type="file"] {
     width: 70%;
 }
+
+
+
+.sub-board {
+    font-style: italic;
+}
+
+.sub-board li {
+    transition: all 200ms ease-in-out;
+}
+
+.sub-board li:hover {
+    font-weight: 900;
+    scale: 1.1;
+}
